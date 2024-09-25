@@ -31,106 +31,6 @@ def fetch_incidents(url):
     
     return temp_pdf_path
 
-# def extract_incidents(pdf_file_path):
-#     """
-#     Extracts incident data from the provided PDF file and combines multi-line records into a single line.
-    
-#     :param pdf_file_path: Path to the PDF file
-#     :return: List of extracted incidents
-#     """
-#     incidents = []
-
-#     # Load the PDF file
-#     reader = PdfReader(pdf_file_path)
-
-#     # Regular expression to match the pattern of the start of a new record (e.g., a date at the beginning)
-#     record_start_pattern = re.compile(r"\d{1,2}/\d{1,2}/\d{4}")
-
-#     # Flag to determine when the header ends and data starts
-#     data_started = False
-
-#     # Temporary storage for current incident record
-#     current_record = ""
-
-#     # Loop through each page and extract text
-#     for page in reader.pages:
-#         text = page.extract_text()
-
-#         # Split the text into lines
-#         lines = text.split("\n")
-
-#         # Process each line and combine multi-line records
-#         for line in lines:
-#             # Skip lines until we find the header
-#             if not data_started:
-#                 if "Date / Time" in line:  # Assuming "Date / Time" is in the header
-#                     data_started = True
-#                 continue  # Skip this line as it is part of the header
-
-#             # Now that data has started, we look for record lines
-#             if record_start_pattern.match(line):
-#                 # If we have accumulated a record, add it to the list
-#                 if current_record:
-#                     incidents.append(current_record.strip())
-                
-#                 # Start a new record
-#                 current_record = line
-#             else:
-#                 # Continue appending to the current record
-#                 current_record += " " + line
-
-#     return incidents
-
-
-# def extract_incidents(pdf_file_path):
-#     """
-#     Extracts incident data from the provided PDF file, structures it into a pandas DataFrame.
-
-#     Parameters:
-#     pdf_file_path (str): Path to the PDF file
-
-#     Returns:
-#     pandas.DataFrame: DataFrame containing extracted incident data
-#     """
-#     is_first_page = True
-#     field_count = 3
-#     header_lines   = 3
-#     table_header_row = 2
-
-#     def regex_splitline(line):
-#         return [item.strip() for item in re.split(r"\s{2,}", line)]
-    
-#     data_store = []
-#     pdf_file = PdfReader(pdf_file_path)
-#     pdf_file.pages[0].extract_text()
-
-#     for page in pdf_file.pages:
-
-#         # extracting the context with layout method, the behavior can be truly unpredictable if the pdf format/structure changes
-#         get_data = page.extract_text(
-#             extraction_mode="layout", layout_mode_space_vertically=False
-#         ).split("\n")
-
-#         if is_first_page is True:
-
-#             # extracting the field names
-#             table_header_names = regex_splitline(get_data[table_header_row])[1:]
-#             # removing the junk lines
-#             get_data = get_data[header_lines  :]
-#             is_first_page = False
-
-#         # splitting the extracted line for respective field values
-#         data_store.extend([regex_splitline(item) for item in get_data])
-
-#         #location data can be in multiple lines, so removing the rows which have less than 3 fields. Also, removing rows that have no values.
-#         data_store = [item for item in data_store if len(item) >= field_count]
-
-#     # converting the list of list to pandas dataframe
-#     df = pd.DataFrame(data_store, columns=['incident_time', 'incident_number', 'incident_location', 'nature', 'incident_ori'])
-#     df['nature'] = df['nature'].apply(lambda x : '' if x is None else x )
-
-#     print(df)
-#     return df
 
 def extract_incidents(pdf_file_path):
     """
@@ -238,6 +138,7 @@ def createdb():
     conn.commit()
     return conn
 
+
 def populatedb(conn, incidents_df):
     """
     Inserts a DataFrame of incidents into the database.
@@ -269,6 +170,7 @@ def populatedb(conn, incidents_df):
         conn.rollback()  # Rollback any changes if there's an error
     finally:
         cursor.close()
+
 
 def status(conn):
     """
