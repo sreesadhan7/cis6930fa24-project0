@@ -10,10 +10,10 @@ from project0.project0 import createdb, populatedb, status
     Tests the fetch_incidents() function to ensure it correctly downloads a PDF from a given URL.
 
     Steps:
-    1. Provides a sample URL to a PDF file for testing.
-    2. Calls fetch_incidents() to download the PDF and returns the file path.
-    3. Verifies that the downloaded file exists at the specified path.
-    4. Cleans up by removing the temporary file after the test.
+    - Provides a sample URL to a PDF file for testing.
+    - Calls fetch_incidents() to download the PDF and returns the file path.
+    - Verifies that the downloaded file exists at the specified path.
+    - Cleans up by removing the temporary file after the test.
 
     The test checks whether the PDF is properly fetched and saved.
     """
@@ -35,14 +35,13 @@ def test_fetch_incidents():
     Tests the extract_incidents() function to ensure it correctly extracts data from a PDF and returns a pandas DataFrame.
 
     Steps:
-    1. Provides a sample URL to a PDF file for testing.
-    2. Calls fetch_incidents() to download the PDF and returns the file path.
-    3. Calls extract_incidents() to extract incident data from the downloaded PDF.
-    4. Verifies that the output is a valid pandas DataFrame.
-    5. Checks if the DataFrame contains the correct columns: 'incident_time', 'incident_number', 
-       'incident_location', 'nature', and 'incident_ori'.
-    6. Ensures that the DataFrame is not empty (assuming the PDF contains data).
-    7. Cleans up by removing the temporary file after the test.
+    - Provides a sample URL to a PDF file for testing.
+    - Calls fetch_incidents() to download the PDF and returns the file path.
+    - Calls extract_incidents() to extract incident data from the downloaded PDF.
+    - Verifies that the output is a valid pandas DataFrame.
+    - Checks if the DataFrame contains the correct columns: 'incident_time', 'incident_number', 'incident_location', 'nature', and 'incident_ori'.
+    - Ensures that the DataFrame is not empty (assuming the PDF contains data).
+    - Cleans up by removing the temporary file after the test.
 
     The test ensures that the incident data is correctly extracted from the PDF and structured in a DataFrame.
     """
@@ -146,17 +145,16 @@ def test_populatedb():
 
 
 """
-    Tests the status() function to ensure that the correct output is printed
-    for the nature of incidents and their respective counts.
+    Tests the status() function to ensure that the correct output is printed for the nature of incidents and their respective counts.
 
     Steps:
-    1. Creates a mock DataFrame with incident data, where 'Nature A' and 'Nature B' occur once each.
-    2. Calls createdb() to create a test SQLite database.
-    3. Inserts the mock data into the database using populatedb().
-    4. Calls the status() function, which prints the nature of incidents and their counts.
-    5. Captures the printed output using capsys.readouterr().
-    6. Verifies that 'Nature A|1' and 'Nature B|1' are present in the output, ensuring the correct counts are printed.
-    7. Cleans up by closing the database connection and removing the test database file.
+    - Creates a mock DataFrame with incident data, where 'Nature A' and 'Nature B' occur once each.
+    - Calls createdb() to create a test SQLite database.
+    - Inserts the mock data into the database using populatedb().
+    - Calls the status() function, which prints the nature of incidents and their counts.
+    - Captures the printed output using capsys.readouterr().
+    - Verifies that 'Nature A|1' and 'Nature B|1' are present in the output, ensuring the correct counts are printed.
+    - Cleans up by closing the database connection and removing the test database file.
 
     The test ensures that the status() function correctly prints the nature of incidents and their occurrence count.
     """

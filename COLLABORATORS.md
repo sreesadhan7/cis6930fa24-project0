@@ -1,1 +1,4 @@
-
+GitHub Copilot | github.com | Assisted significantly in writing robust function docstrings and completing complex code structures.
+Python Standard Library | python.org | Utilized extensively for url operations, exception handling, libraries and other core functionalities, serving as the backbone for the project's development.
+SQLite3 | sqlite.org | Helped me understand how to interact with SQLite databases and execute SQL queries within Python.
+PyPDF | pypdf.readthedocs.io | Assisted in extracting text and metadata from PDF files using Python, especially for my incident data extraction project.
