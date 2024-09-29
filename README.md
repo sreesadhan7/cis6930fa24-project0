@@ -59,6 +59,8 @@ To execute the project, navigate to the project directory and run the following 
 
          pipenv run python project0/main.py --incidents "https://www.normanok.gov/sites/default/files/documents/2024-08/2024-08-01_daily_incident_summary.pdf"
 
+https://github.com/user-attachments/assets/f9ceebeb-7a52-4293-9502-c1a2f6745afd
+
 ## Test Cases run
 Running the following pipenv command runs the pytest cases. This project have 5 test cases.
 command to run test cases: 
