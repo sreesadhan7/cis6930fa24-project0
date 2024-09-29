@@ -65,8 +65,6 @@ command to run test cases:
 
       pipenv run python -m pytest -v
 
-![video](video)
-
 ## Functions
 ### main.py
 **main(url)**
