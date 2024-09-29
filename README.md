@@ -212,6 +212,7 @@ All the functions referenced in the **main()** function, such as **fetch_inciden
 5) **test_status(capsys)**
 
    - Tests the status() function to ensure that the correct output is printed for the nature of incidents and their respective counts.
+   - capsys is a fixture provided by pytest that captures stdout and stderr output during the test.
    - Steps:
        - Creates a mock DataFrame with incident data, where 'Nature A' and 'Nature B' occur once each.
        - Calls createdb() to create a test SQLite database.
