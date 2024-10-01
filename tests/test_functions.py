@@ -79,7 +79,7 @@ def test_extract_incidents():
     - Calls createdb() to create the database.
     - Verifies that the database file exists at the expected location.
     - Queries the 'sqlite_master' table to confirm the 'incidents' table is created.
-    - Cleans up by closing the connection and removing the database file.
+    - Cleans up by closing the connection.
     """
 def test_createdb():
     # Create a test database
@@ -98,7 +98,7 @@ def test_createdb():
     # Clean up
     cursor.close()
     conn.close()
-    os.remove(db_path)
+    # os.remove(db_path)
 
 
 """
@@ -112,7 +112,7 @@ def test_createdb():
     - Calls createdb() to create a test database.
     - Uses populatedb() to insert the mock data into the database.
     - Verifies that the data has been successfully inserted by querying the database.
-    - Cleans up by closing the database connection and removing the test database file.
+    - Cleans up by closing the database connection.
     """
 def test_populatedb():
     # Create a test DataFrame with mock data
@@ -140,8 +140,8 @@ def test_populatedb():
     # Clean up
     cursor.close()
     conn.close()
-    db_path = os.path.join(os.path.dirname(__file__), '..', 'resources', 'normanpd.db')
-    os.remove(db_path)
+    # db_path = os.path.join(os.path.dirname(__file__), '..', 'resources', 'normanpd.db')
+    # os.remove(db_path)
 
 
 """
@@ -154,7 +154,7 @@ def test_populatedb():
     - Calls the status() function, which prints the nature of incidents and their counts.
     - Captures the printed output using capsys.readouterr().
     - Verifies that 'Nature A|1' and 'Nature B|1' are present in the output, ensuring the correct counts are printed.
-    - Cleans up by closing the database connection and removing the test database file.
+    - Cleans up by closing the database connection.
 
     The test ensures that the status() function correctly prints the nature of incidents and their occurrence count.
     """
@@ -187,5 +187,5 @@ def test_status(capsys):
     
     # Clean up
     conn.close()
-    db_path = os.path.join(os.path.dirname(__file__), '..', 'resources', 'normanpd.db')
-    os.remove(db_path)
+    # db_path = os.path.join(os.path.dirname(__file__), '..', 'resources', 'normanpd.db')
+    # os.remove(db_path)
