@@ -195,7 +195,7 @@ All the functions referenced in the **main()** function, such as **fetch_inciden
        - Calls createdb() to create the database.
        - Verifies that the database file exists at the expected location.
        - Queries the 'sqlite_master' table to confirm the 'incidents' table is created.
-       - Cleans up by closing the connection and removing the database file.
+       - Cleans up by closing the connection.
 
 4) **test_populatedb()**
 
@@ -207,7 +207,7 @@ All the functions referenced in the **main()** function, such as **fetch_inciden
        - Calls createdb() to create a test database.
        - Uses populatedb() to insert the mock data into the database.
        - Verifies that the data has been successfully inserted by querying the database.
-       - Cleans up by closing the database connection and removing the test database file.
+       - Cleans up by closing the database connection.
 
 5) **test_status(capsys)**
 
@@ -220,7 +220,7 @@ All the functions referenced in the **main()** function, such as **fetch_inciden
        - Calls the status() function, which prints the nature of incidents and their counts.
        - Captures the printed output using capsys.readouterr().
        - Verifies that 'Nature A|1' and 'Nature B|1' are present in the output, ensuring the correct counts are printed.
-       - Cleans up by closing the database connection and removing the test database file.
+       - Cleans up by closing the database connection.
      - This test ensures that the status() function correctly prints the nature of incidents and their occurrence count.
 
 ## Database Development
