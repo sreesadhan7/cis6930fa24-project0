@@ -75,7 +75,7 @@ def extract_incidents(pdf_file_path):
 
         # Splitting each extracted line for respective field values and cleaning up extra spaces
         data_store.extend([ [item.strip() for item in re.split(r"\s{2,}", line)] for line in get_data ])
-
+        data_store = [item for item in data_store if len(item) == 5]  # Remove empty rows
         # Increment page index to continue with the next page
         page_index += 1
 
